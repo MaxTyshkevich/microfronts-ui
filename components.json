@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "css": "src/shared/ui/shadcn/theme.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/shared/ui/shadcn",
+    "ui": "@/shared/ui/shadcn",
+    "utils": "@/shared/ui/shadcn/utils",
+    "lib": "@/shared/ui/shadcn",
+    "hooks": "@/shared/ui/shadcn"
+  }
+}

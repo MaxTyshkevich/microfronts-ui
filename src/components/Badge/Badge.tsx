@@ -8,4 +8,3 @@ type BadgeProps = {
 export function Badge({ children, tone = "blue" }: BadgeProps) {
   return <span className={`mf-badge mf-badge-${tone}`}>{children}</span>;
 }
-

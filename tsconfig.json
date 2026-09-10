@@ -7,9 +7,12 @@
     "jsx": "react-jsx",
     "strict": true,
     "skipLibCheck": true,
-    "declaration": true,
-    "outDir": "dist",
-    "rootDir": "src"
+    /* "declaration": true,
+    "outDir": "dist", */
+    "rootDir": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", ".storybook/**/*", "*.config.ts", "*.d.ts"]
 }

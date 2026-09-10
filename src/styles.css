@@ -1,0 +1,6 @@
+@import "./styles.base.css";
+
+@source "./components";
+@source not "./components/**/*.stories.*";
+@source not "./components/**/*.test.*";
+@source not "./components/**/*.spec.*";

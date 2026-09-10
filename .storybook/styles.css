@@ -1,0 +1,7 @@
+@import "../src/styles.base.css";
+
+@source "../src/components";
+@source not "../src/components/**/*.test.*";
+@source not "../src/components/**/*.spec.*";
+@source "../src/docs";
+@source "./preview.tsx";

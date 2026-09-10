@@ -4,3 +4,24 @@ dist
 .env.local
 *.log
 
+
+storybook-static/
+coverage/
+
+playwright-report/
+test-results/
+
+# Locally installed skills are not part of this repository.
+.agents/skills/*
+!.agents/skills/ui-library-development/
+!.agents/skills/ui-library-development/**
+!.agents/skills/ui-library-verification/
+!.agents/skills/ui-library-verification/**
+!.agents/skills/ui-library-package-maintenance/
+!.agents/skills/ui-library-package-maintenance/**
+
+# Local task plans and generated test diagnostics.
+/.codex/plans/
+/.vitest-attachments/
+/src/**/__screenshots__/
+*.tsbuildinfo

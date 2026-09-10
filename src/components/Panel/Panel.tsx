@@ -13,4 +13,3 @@ export function Panel({ title, children }: PanelProps) {
     </section>
   );
 }
-

@@ -1,0 +1,38 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Guide/Introduction" />
+
+# UI-Kit
+
+Button и Input — базовые компоненты без бизнес-логики.
+В разделе Components доступны default, hovered, focused, error и disabled.
+Тема переключается через Theme в панели Storybook; Dark показывает тёмную тему отдельно.
+
+## Подключение
+
+```tsx
+import { Button, Input } from "@microfronts/ui";
+// Стили подключаются автоматически при импорте компонентов.
+// Также доступны @microfronts/ui/button и @microfronts/ui/input.
+```
+
+Input работает с React Hook Form через control или FormProvider.
+Передавайте label и defaultValues формы. Валидация Zod подключается через zodResolver
+на уровне useForm, а ошибки и их ARIA-связи отображаются самим Input.
+
+Button поддерживает variant, size, disabled и error. Для кнопки отправки задавайте type="submit".
+Вкладка Accessibility проверяет доступность. Реальные действия пользователя проверяют браузерные тесты, описанные в Guide/Testing.
+
+## Как читать истории
+
+- Components/Input показывает только поле: подпись, подсказку и состояние. Кнопки не являются частью Input.
+- Examples/Input form показывает форму с Submit/Reset, React Hook Form и Zod. Её можно проверить вручную.
+- Docs содержит описание, таблицу props и все состояния одновременно. Controls изменяет публичные props компонента.
+- Default интерактивен: наведите мышь или перейдите клавишей Tab. Hovered и Focused показывают закреплённый вид и не перехватывают клавиатурный фокус страницы.
+- Error виден сразу, Disabled недоступен для ввода. Для всех состояний доступен переключатель Theme.
+
+Закреплённые состояния создаются только при сборке Storybook из тех же CSS-правил, что используются настоящими :hover и :focus-visible. Демонстрационные атрибуты не добавлены в публичный API и не включаются в CSS npm-пакета.
+
+## Проверки документации
+
+Запустите `npm run test:playwright`: тесты открывают Canvas и Docs, сравнивают закреплённые состояния с реальными и выполняют сценарий формы. Команда `npm run test:playwright:report` открывает HTML-отчёт с шагами, скриншотами и трассировкой ошибок. Подробности находятся в Guide/Testing.
