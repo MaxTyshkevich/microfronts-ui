@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "**/src/styles.base.css": "tailwindcss",
+    "**/src/styles.css": "tailwindcss",
+    "**/.storybook/styles.css": "tailwindcss"
+  }
+}

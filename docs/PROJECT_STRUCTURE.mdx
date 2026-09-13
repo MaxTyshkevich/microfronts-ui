@@ -182,3 +182,7 @@ src/test/render.tsx создаёт React root и очищает его посл�
 - `scripts/check-package.mjs` дополнительно проверяет отсутствие стилей декоратора и псевдосостояний Storybook в CSS пакета, единственность ссылок на sourcemaps и удаление RHF при импорте одного Button из корня.
 
 Пути руководств: `docs/BUILD.mdx` и `docs/PROJECT_STRUCTURE.mdx`. Они служат документацией репозитория; страницы в интерфейсе Storybook находятся в `src/docs/*.mdx`.
+
+### Языковой режим CSS в VS Code
+
+`.vscode/settings.json` назначает режим `tailwindcss` трём CSS-входам: `src/styles.base.css`, `src/styles.css` и `.storybook/styles.css`. Его предоставляет Tailwind CSS IntelliSense (`bradlc.vscode-tailwindcss`). Это позволяет редактору распознавать `source(none)` и `@source`; обычная CSS-валидация остальных файлов не отключается. Настройка применяется, когда пакет открыт как папка рабочего пространства VS Code.
