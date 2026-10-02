@@ -31,6 +31,9 @@ for (const entry of ["@microfronts/ui", "@microfronts/ui/button", "@microfronts/
   assert.equal(result.warnings.length, 0, `Bundler warnings for ${entry}`);
   const css = result.outputFiles.find((file) => file.path.endsWith(".css"));
   assert.ok(css?.text.includes("--background"), `Missing automatic CSS for ${entry}`);
+  postcss.parse(css.text).walkAtRules("layer", (rule) => {
+    assert.ok(rule.params.trim() !== "base" || !rule.nodes, `Unexpected reset in ${entry}`);
+  });
 }
 const hooks = registerHooks({
   load(url, context, nextLoad) {
@@ -60,6 +63,16 @@ postcss.parse(fs.readFileSync(cssPath, "utf8")).walkDecls((decl) => {
 hooks.deregister();
 
 const cssText = fs.readFileSync(cssPath, "utf8");
+postcss.parse(cssText).walkAtRules("layer", (rule) => {
+  assert.ok(
+    rule.params.trim() !== "base" || !rule.nodes,
+    "Global base rules leaked into component CSS",
+  );
+});
+const resetText = fs.readFileSync(require.resolve("@microfronts/ui/reset.css"), "utf8");
+assert.ok(resetText.includes("box-sizing"), "Missing Preflight in explicit reset");
+assert.ok(resetText.includes("body"), "Missing global theme defaults in explicit reset");
+assert.ok(!resetText.includes("--tw-shadow:"), "Component utilities leaked into reset");
 assert.ok(!cssText.includes(".p-6{"), "Storybook decorator padding leaked into package CSS");
 assert.ok(!cssText.includes("data-story-state"), "Storybook state aliases leaked into package CSS");
 for (const name of fs.readdirSync("dist")) {

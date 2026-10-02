@@ -1,7 +1,7 @@
 {
   "name": "@microfronts/ui",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.2.0-tailwind.0",
   "type": "module",
   "exports": {
     ".": {
@@ -34,7 +34,8 @@
         "default": "./dist/input.cjs"
       }
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./reset.css": "./dist/reset.css"
   },
   "files": [
     "dist"
